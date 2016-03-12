@@ -114,7 +114,7 @@ class AppList(AppListElementMixin, MenuItem):
         for model, perms in items:
             if not perms['change'] and not perms['add']:
                 continue
-            app_label = model._meta.app_label
+            app_label = model._meta.app_config.verbose_name
             if app_label not in apps:
                 apps[app_label] = {
                     'title': capfirst(_(app_label.title())),
